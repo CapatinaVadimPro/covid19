@@ -1,15 +1,34 @@
 import * as React from 'react';
-import { View, Button, Text, Animated } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { View, Text, StyleSheet, Platform } from 'react-native';
 
-const InfoComp = ({ navigation }) => {
+
+import Colors from '../../../constants/Colors';
+
+import Header, { headerHeight } from '../../../components/Header';
+
+const InfoComp = ({ navigation, route }) => {
 	return (
-		<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-			<Text>Info !</Text>
-			<Button title="Go back" onPress={() => navigation.goBack()} />
+		<View style={styles.container}>
+			<Header navigation={navigation} route={route} />
+			<View style={styles.body}>
+				<Text>Info !</Text>
+			</View>
 		</View>
 	);
 };
+const styles = StyleSheet.create({
+	container: {
+		flex: 1,
+		backgroundColor: Colors.lightGrey,
+	},
+	text: {
+		fontSize: 30,
+		marginTop: 1,
+		color: Colors.lightBlue,
+	},
 
+	body: {
+		marginTop: Platform.OS === 'android' ? 25 + headerHeight : headerHeight,
+	},
+});
 export default InfoComp;
