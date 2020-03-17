@@ -1,16 +1,83 @@
 import * as React from 'react';
-import { View, Text,Platform,StyleSheet } from 'react-native';
+import { View, Text, Platform, StyleSheet, ScrollView } from 'react-native';
+import moment from 'moment';
 import Colors from '../../../constants/Colors';
 
 import Header, { headerHeight } from '../../../components/Header';
+import Layout from '../../../constants/Layout';
+import { Data, World_data } from '../../../constants/Data';
+
+const DataRow = ({ data }) => {
+	console.log(data);
+
+	return (
+		<View style={styles.row}>
+			<View style={styles.row_case}>
+				<Text style={[styles.row_text, { color: Colors.flat_anthracite }]}>{data.country}</Text>
+			</View>
+			<View style={styles.row_case}>
+				<Text style={[styles.row_text, { color: Colors.coralPink }]}>{data.totalCases}</Text>
+			</View>
+			<View style={styles.row_case}>
+				<Text style={[styles.row_text, { color: Colors.flat_orange }]}>{data.newCases}</Text>
+			</View>
+			<View style={styles.row_case}>
+				<Text style={[styles.row_text, { color: Colors.flat_red }]}>{data.newDeaths}</Text>
+			</View>
+			<View style={styles.row_case}>
+				<Text style={[styles.row_text, { color: Colors.flat_turquoise }]}>{data.totalRecovered}</Text>
+			</View>
+		</View>
+	);
+};
+
+const CountryList = () => {
+	const CoronaList = Data.map(data => <DataRow key={data.id} data={data} />);
+	return CoronaList;
+};
 
 const StatsCov = ({ navigation, route }) => {
+	var date = moment();
+	date.locale('fr');
+	const today = date.format('LLLL');
 	return (
 		<View style={styles.container}>
 			<Header navigation={navigation} route={route} />
-			<View style={styles.body}>
-				<Text>Stats !</Text>
-			</View>
+			<ScrollView style={styles.body}>
+				<View style={styles.world}>
+					<Text style={styles.date}>{today.toLocaleUpperCase()}</Text>
+					<Text style={styles.title}>Cas de Coronavirus</Text>
+					<Text style={[styles.data, { color: Colors.coralPink }]}>{World_data.totalCases}</Text>
+					<Text style={styles.title}>Nouveaux cas aujourd'hui </Text>
+					<Text style={[styles.data, { color: Colors.flat_orange }]}>{World_data.newCases}</Text>
+					<Text style={styles.title}>Nombre de morts</Text>
+					<Text style={[styles.data, { color: Colors.flat_red }]}>{World_data.totalDeaths}</Text>
+					<Text style={styles.title}>Personnes soignées</Text>
+					<Text style={[styles.data, { color: Colors.flat_green }]}>{World_data.totalRecovered}</Text>
+				</View>
+				<View style={styles.detailTab}>
+					<View style={styles.headTab}>
+						<View style={styles.headTab_case}>
+							<Text style={styles.headTab_text}>Pays</Text>
+						</View>
+						<View style={styles.headTab_case}>
+							<Text style={styles.headTab_text}>Nb cas</Text>
+						</View>
+						<View style={styles.headTab_case}>
+							<Text style={styles.headTab_text}>Nvx cas</Text>
+						</View>
+						<View style={styles.headTab_case}>
+							<Text style={styles.headTab_text}>Nb morts</Text>
+						</View>
+						<View style={styles.headTab_case}>
+							<Text style={styles.headTab_text}>Soignés</Text>
+						</View>
+					</View>
+					<ScrollView nestedScrollEnabled>
+						<CountryList />
+					</ScrollView>
+				</View>
+			</ScrollView>
 		</View>
 	);
 };
@@ -28,6 +95,63 @@ const styles = StyleSheet.create({
 	body: {
 		marginTop: Platform.OS === 'android' ? 25 + headerHeight : headerHeight,
 	},
+	world: {
+		flex: 1,
+		alignItems: 'center',
+		marginBottom: 20,
+	},
+
+	date: {
+		fontSize: 30,
+		color: Colors.lightBlue,
+		marginVertical: 5,
+		fontFamily: 'montserrat-thin',
+		textAlign: 'center',
+	},
+	title: { fontSize: 30, fontFamily: 'montserrat-light', letterSpacing: -2, color: Colors.lightBlue },
+	data: { fontSize: 50, fontFamily: 'montserrat-lightItalic' },
+	detailTab: { flex: 1, width: Layout.window.width, height: Layout.window.height - 80 - headerHeight },
+	headTab: {
+		display: 'flex',
+		flexDirection: 'row',
+		backgroundColor: Colors.flat_anthracite,
+		height: 80,
+		width: Layout.window.width,
+		borderBottomWidth: 0,
+		borderTopWidth: 0,
+		borderColor: Colors.flat_anthracite,
+		opacity: 0.99,
+	},
+	headTab_case: {
+		width: Layout.window.width / 5,
+		height: 80,
+		flex: 1,
+		justifyContent: 'center',
+		alignItems: 'center',
+		borderWidth: 1,
+		borderRightColor: Colors.lightBlue,
+		borderLeftColor: Colors.lightBlue,
+	},
+	headTab_text: { color: Colors.lightBlue, fontSize: 16, textAlign: 'center', fontFamily: 'montserrat-light' },
+	row: {
+		display: 'flex',
+		flexDirection: 'row',
+		marginBottom: -2,
+		borderWidth: 1,
+		borderBottomWidth: 0,
+		borderColor: Colors.lightBlue,
+	},
+	row_case: {
+		width: Layout.window.width / 5,
+		height: 100,
+		flex: 1,
+		justifyContent: 'center',
+		alignItems: 'center',
+		borderWidth: 1,
+		borderColor: Colors.lightBlue,
+		borderLeftWidth: 0,
+	},
+	row_text: { color: '#000', fontSize: 20 },
 });
 
 export default StatsCov;

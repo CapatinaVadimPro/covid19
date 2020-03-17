@@ -29,6 +29,15 @@ export default function App(props) {
 				await Font.loadAsync({
 					...Ionicons.font,
 					'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
+					'montserrat': require('./assets/fonts/Montserrat-Regular.ttf'),
+					'montserrat-light': require('./assets/fonts/Montserrat-Light.ttf'),
+					'montserrat-semiBold' : require('./assets/fonts/Montserrat-SemiBold.ttf'),
+					'montserrat-bold': require('./assets/fonts/Montserrat-Bold.ttf'),
+					'montserrat-thin' : require('./assets/fonts/Montserrat-Thin.ttf'),
+					'montserrat-lightItalic' : require('./assets/fonts/Montserrat-LightItalic.ttf'),
+					'montserrat-light' : require('./assets/fonts/Montserrat-Light.ttf'),
+					'montserrat-italic' : require('./assets/fonts/Montserrat-Italic.ttf')
+
 				});
 			} catch (e) {
 				// We might want to provide this error information to an error reporting service
