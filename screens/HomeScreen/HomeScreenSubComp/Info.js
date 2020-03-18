@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, Platform } from "react-native";
 import axios from "axios";
 
+import {FirstADR} from 'react-native-dotenv';
+
 import Colors from "../../../constants/Colors";
 
 import Header, { headerHeight } from "../../../components/Header";
@@ -11,7 +13,7 @@ const InfoComp = ({ navigation, route }) => {
 
 
   const getData = async () => {
-    const res = await axios.get("http://localhost:1337/all");
+    const res = await axios.get(`${FirstADR}/global-info`);
     console.log(res.data);
     setData(res.data);
   };
@@ -19,16 +21,20 @@ const InfoComp = ({ navigation, route }) => {
   useEffect(() => {
     getData();
   }, []);
+  if (!info){
+    console.log(info);
+    console.log("loading=========");
+  }
+  else {
   return (
     <View style={styles.container}>
       <Header navigation={navigation} route={route} />
       <View style={styles.body}>
-        {info.map(i => (
-          <Text>{i.title} -> {i.number}</Text>))}
+          <Text>{info.totalCases}</Text>
       </View>
     </View>
-  );
-};
+  )}
+}
 const styles = StyleSheet.create({
   container: {
     flex: 1,

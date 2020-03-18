@@ -1,50 +1,48 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import { View, Text, Platform, StyleSheet, ScrollView } from 'react-native';
 import moment from 'moment';
 import Colors from '../../../constants/Colors';
 import axios from 'axios';
+import {FirstADR} from 'react-native-dotenv';
 
 import Header, { headerHeight } from '../../../components/Header';
 import Layout from '../../../constants/Layout';
 
-const DataRow = () => {
-  const [infos, setData] = useState([]);
-
-  const getData = async () => {
-    const res = await axios.get('http://localhost:1337/all-info');
-    setData(res.data);
-  };
-
-  useEffect(() => {
-	getData();
-  }, []);
-
+const DataRow = ({ i }) => {
 	return (
-		< >
-		{ infos.map(i => (
-			<View style={styles.row}>
-				<View style={styles.row_case}>
-					<Text style={[styles.row_text, { color: Colors.flat_anthracite }]}>{i.country}</Text>
-				</View>
-				<View style={styles.row_case}>
-					<Text style={[styles.row_text, { color: Colors.coralPink }]}>{i.totalCases}</Text>
-				</View>
-				<View style={styles.row_case}>
-					<Text style={[styles.row_text, { color: Colors.flat_orange }]}>{i.newCases}</Text>
-				</View>
-				<View style={styles.row_case}>
-					<Text style={[styles.row_text, { color: Colors.flat_red }]}>{i.newDeaths}</Text>
-				</View>
-				<View style={styles.row_case}>
-					<Text style={[styles.row_text, { color: Colors.flat_turquoise }]}>{i.totalRecovered}</Text>
-				</View>
+		<View style={styles.row}>
+			<View style={styles.row_case}>
+				<Text style={[styles.row_text, { color: Colors.flat_anthracite }]}>{i.country}</Text>
 			</View>
-		))}
-		</ >
+			<View style={styles.row_case}>
+				<Text style={[styles.row_text, { color: Colors.coralPink }]}>{i.totalCases}</Text>
+			</View>
+			<View style={styles.row_case}>
+				<Text style={[styles.row_text, { color: Colors.flat_orange }]}>{i.newCases}</Text>
+			</View>
+			<View style={styles.row_case}>
+				<Text style={[styles.row_text, { color: Colors.flat_red }]}>{i.newDeaths}</Text>
+			</View>
+			<View style={styles.row_case}>
+				<Text style={[styles.row_text, { color: Colors.flat_turquoise }]}>{i.totalRecovered}</Text>
+			</View>
+		</View>
 	);
 };
 
+const DataTab = () => {
+	const [infos, setData] = useState([]);
 
+	useEffect(() => {
+		const getData = async () => {
+			const res = await axios.get(`${FirstADR}/all-info`);
+			return res.data;
+		};
+		getData().then(data => {setData(data)});
+	}, []);
+	const Array = infos.map(i => <DataRow key={i.country} i={i} />);
+	return Array;
+};
 
 const StatsCov = ({ navigation, route }) => {
 	var date = moment();
@@ -54,61 +52,53 @@ const StatsCov = ({ navigation, route }) => {
 	const [total, setTotalData] = useState([]);
 
 	const getTotalData = async () => {
-		const res = await axios.get('http://localhost:1337/global-info');
+		const res = await axios.get(`${FirstADR}/global-info`);
 		setTotalData(res.data);
-	}
+	};
 
 	useEffect(() => {
 		getTotalData();
 	}, []);
 	return (
-    <View style={styles.container}>
-      <Header navigation={navigation} route={route} />
-      <ScrollView style={styles.body}>
-        <View style={styles.world}>
-          <Text style={styles.date}>{today.toLocaleUpperCase()}</Text>
-          <Text style={styles.title}>Cas de Coronavirus</Text>
-          <Text style={[styles.data, { color: Colors.coralPink }]}>
-            {total.totalCases}
-          </Text>
-          <Text style={styles.title}>Nouveaux cas aujourd'hui </Text>
-          <Text style={[styles.data, { color: Colors.flat_orange }]}>
-            {total.newCases}
-          </Text>
-          <Text style={styles.title}>Nombre de morts</Text>
-          <Text style={[styles.data, { color: Colors.flat_red }]}>
-            {total.totalDeaths}
-          </Text>
-          <Text style={styles.title}>Personnes soignées</Text>
-          <Text style={[styles.data, { color: Colors.flat_green }]}>
-            {total.totalRecovered}
-          </Text>
-        </View>
-        <View style={styles.detailTab}>
-          <View style={styles.headTab}>
-            <View style={styles.headTab_case}>
-              <Text style={styles.headTab_text}>Pays</Text>
-            </View>
-            <View style={styles.headTab_case}>
-              <Text style={styles.headTab_text}>Nb cas</Text>
-            </View>
-            <View style={styles.headTab_case}>
-              <Text style={styles.headTab_text}>Nvx cas</Text>
-            </View>
-            <View style={styles.headTab_case}>
-              <Text style={styles.headTab_text}>Nb morts</Text>
-            </View>
-            <View style={styles.headTab_case}>
-              <Text style={styles.headTab_text}>Soignés</Text>
-            </View>
-          </View>
-          <ScrollView nestedScrollEnabled>
-            <DataRow />
-          </ScrollView>
-        </View>
-      </ScrollView>
-    </View>
-  );
+		<View style={styles.container}>
+			<Header navigation={navigation} route={route} />
+			<ScrollView style={styles.body}>
+				<View style={styles.world}>
+					<Text style={styles.date}>{today.toLocaleUpperCase()}</Text>
+					<Text style={styles.title}>Cas de Coronavirus</Text>
+					<Text style={[styles.data, { color: Colors.coralPink }]}>{total.totalCases}</Text>
+					<Text style={styles.title}>Nouveaux cas aujourd'hui </Text>
+					<Text style={[styles.data, { color: Colors.flat_orange }]}>{total.newCases}</Text>
+					<Text style={styles.title}>Nombre de morts</Text>
+					<Text style={[styles.data, { color: Colors.flat_red }]}>{total.totalDeaths}</Text>
+					<Text style={styles.title}>Personnes soignées</Text>
+					<Text style={[styles.data, { color: Colors.flat_green }]}>{total.totalRecovered}</Text>
+				</View>
+				<View style={styles.detailTab}>
+					<View style={styles.headTab}>
+						<View style={styles.headTab_case}>
+							<Text style={styles.headTab_text}>Pays</Text>
+						</View>
+						<View style={styles.headTab_case}>
+							<Text style={styles.headTab_text}>Nb cas</Text>
+						</View>
+						<View style={styles.headTab_case}>
+							<Text style={styles.headTab_text}>Nvx cas</Text>
+						</View>
+						<View style={styles.headTab_case}>
+							<Text style={styles.headTab_text}>Nb morts</Text>
+						</View>
+						<View style={styles.headTab_case}>
+							<Text style={styles.headTab_text}>Soignés</Text>
+						</View>
+					</View>
+					<ScrollView nestedScrollEnabled>
+						<DataTab />
+					</ScrollView>
+				</View>
+			</ScrollView>
+		</View>
+	);
 };
 const styles = StyleSheet.create({
 	container: {

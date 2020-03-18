@@ -1,10 +1,12 @@
 const express = require("express");
 const cors = require("cors");
 const scrapper = require("./scrapper");
+const bodyParser = require('body-parser');
 
 const app = express();
 
 
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(cors());
 
 app.get('/', (req, res) => {
@@ -15,13 +17,15 @@ app.get('/', (req, res) => {
 
 app.get('/all-info', (req, res) => {
   scrapper.getAllInfo().then(data => {
-    res.json(data);
+    res.send(data);
+    console.log("action demanded all info");
   });
 });
 
 app.get('/global-info', (req, res) => {
   scrapper.getTotalWorldStat().then(data => {
-    res.json(data);
+    res.send(data);
+    console.log("action demanded global info");
   });
 });
 
@@ -30,7 +34,7 @@ app.get('/all-country/:country', (req, res) => {
     scrapper
       .getInfoByCountry(req.params.country)
       .then(data=> {
-           res.json(data);
+           res.send(data);
         });
 });
 
