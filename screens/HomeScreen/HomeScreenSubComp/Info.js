@@ -1,28 +1,30 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, Platform } from "react-native";
+import axios from "axios";
 
 import Colors from "../../../constants/Colors";
 
 import Header, { headerHeight } from "../../../components/Header";
-import { getGeneralData } from "../../../API";
 
 const InfoComp = ({ navigation, route }) => {
-  const [data, setData] = useState({});
+  const [info, setData] = useState([]);
+
 
   const getData = async () => {
-    const data = await getGeneralData();
-    setData(data[2]);
+    const res = await axios.get("http://localhost:1337/all");
+    console.log(res.data);
+    setData(res.data);
   };
 
   useEffect(() => {
     getData();
   }, []);
-  console.log(data);
   return (
     <View style={styles.container}>
       <Header navigation={navigation} route={route} />
       <View style={styles.body}>
-        <Text></Text>
+        {info.map(i => (
+          <Text>{i.title} -> {i.number}</Text>))}
       </View>
     </View>
   );

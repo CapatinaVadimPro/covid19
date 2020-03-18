@@ -1,10 +1,11 @@
 const express = require("express");
+const cors = require("cors");
 const scrapper = require("./scrapper");
 
 const app = express();
 
 
-const all = require("./router.js");
+app.use(cors());
 
 app.get('/', (req, res) => {
   res.json({
@@ -12,15 +13,14 @@ app.get('/', (req, res) => {
   });
 });
 
-app.get('/all', (req, res) => {
-  scrapper.getAllInfo().then(infos => {
-    const data = res.json(infos);
-    return data;
+app.get('/all-info', (req, res) => {
+  scrapper.getAllInfo().then(data => {
+    res.json(data);
   });
 });
 
-app.get('/all-country', (req, res) => {
-  scrapper.getInfoAllCoutry().then(data => {
+app.get('/global-info', (req, res) => {
+  scrapper.getTotalWorldStat().then(data => {
     res.json(data);
   });
 });
