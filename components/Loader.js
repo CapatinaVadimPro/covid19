@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { View, Text, StyleSheet, Platform, TouchableOpacity } from 'react-native';
-import { Ionicons, AntDesign } from '@expo/vector-icons';
+import { View, Text, StyleSheet, Platform, Image } from 'react-native';
+import AnimatedLoader from 'react-native-animated-loader';
 
 import Colors from '../constants/Colors';
 import Layout from '../constants/Layout';
@@ -12,15 +12,9 @@ const Loader = () => {
 				flex: 1,
 				alignItems: 'center',
 				justifyContent: 'center',
-				marginTop: 200,
 			}}
 		>
-			<AntDesign
-				name={'loading1'}
-				size={100}
-				style={{ backgroundColor: Colors.flat_orange }}
-				color={Colors.flat_anthracite}
-			/>
+			<Image source={require('../assets/images/loader.gif')} style={{ width: 150, height: 150 }} />
 		</View>
 	);
 };

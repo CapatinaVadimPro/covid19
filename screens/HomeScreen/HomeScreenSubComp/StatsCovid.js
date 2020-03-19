@@ -15,8 +15,8 @@ const StatsCov = ({ navigation, route }) => {
 	date.locale('fr');
 	const today = date.format('LLLL');
 
-	const [world_info, setWorldData] = useState([]);
-	const [countries_info, setCountryData] = useState([]);
+	const [world_info, setWorldData] = useState({ data: [], status: 0 });
+	const [countries_info, setCountryData] = useState({ data: [], status: 0 });
 
 	async function getWorldData() {
 		try {
@@ -24,8 +24,9 @@ const StatsCov = ({ navigation, route }) => {
 				headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
 				//crossDomain: true
 			});
-			setWorldData(res.data);
-			return res.data;
+			res.status === 200
+				? setWorldData({ data: res.data, status: res.status })
+				: console.log('ERROR FETCHING DATA in getCountryData()');
 		} catch (err) {
 			console.log('data acquisition failed', err);
 		}
@@ -37,8 +38,9 @@ const StatsCov = ({ navigation, route }) => {
 				headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
 				//crossDomain: true
 			});
-
-			setCountryData(res.data);
+			res.status === 200
+				? setCountryData({ data: res.data, status: res.status })
+				: console.log('ERROR FETCHING DATA in getCountryData()');
 		} catch (err) {
 			console.log('data acquisition failed', err);
 		}
@@ -51,15 +53,18 @@ const StatsCov = ({ navigation, route }) => {
 	return (
 		<View style={styles.container}>
 			<Header navigation={navigation} route={route} />
-			<Loader />
-			<StatTab
-				world_info={world_info}
-				countries_info={countries_info}
-				route={route}
-				navigation={navigation}
-				headerHeight={headerHeight}
-				today={today}
-			/>
+			{world_info.status === 200 && countries_info.status === 200 ? (
+				<StatTab
+					world_info={world_info.data}
+					countries_info={countries_info.data}
+					route={route}
+					navigation={navigation}
+					headerHeight={headerHeight}
+					today={today}
+				/>
+			) : (
+				<Loader />
+			)}
 		</View>
 	);
 };
