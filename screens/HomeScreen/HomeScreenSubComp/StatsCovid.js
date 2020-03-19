@@ -43,7 +43,7 @@ const DataTab = () => {
 		};
 		getData().then(data => {setData(data)});
 	}, []);
-	const Array = infos.map(i => <DataRow key={i.country} i={i} />);
+	const Array = infos.map(i => <DataRow key={i.id} i={i} />);
 	return Array;
 };
 
