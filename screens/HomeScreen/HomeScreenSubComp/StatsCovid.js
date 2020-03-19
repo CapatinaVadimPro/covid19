@@ -35,7 +35,10 @@ const DataTab = () => {
 
 	useEffect(() => {
 		const getData = async () => {
-			const res = await axios.get(`${FirstADR}/all-info`);
+			const res = await axios.get(`${FirstADR}/all-info`, {
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        crossDomain: true
+      });
 			return res.data;
 		};
 		getData().then(data => {setData(data)});
@@ -52,7 +55,10 @@ const StatsCov = ({ navigation, route }) => {
 	const [total, setTotalData] = useState([]);
 
 	const getTotalData = async () => {
-		const res = await axios.get(`${FirstADR}/global-info`);
+		const res = await axios.get(`${FirstADR}/global-info`, {
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      crossDomain: true
+    });
 		setTotalData(res.data);
 	};
 

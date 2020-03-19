@@ -11,21 +11,18 @@ import Header, { headerHeight } from "../../../components/Header";
 const InfoComp = ({ navigation, route }) => {
   const [info, setData] = useState([]);
 
+	const getTotalData = async () => {
+    const res = await axios.get(`${FirstADR}/global-info`, {
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      crossDomain: true
+    });
+		setData(res.data);
+	};
 
-  const getData = async () => {
-    const res = await axios.get(`${FirstADR}/global-info`);
-    console.log(res.data);
-    setData(res.data);
-  };
+	useEffect(() => {
+		getTotalData();
+	}, []);
 
-  useEffect(() => {
-    getData();
-  }, []);
-  if (!info){
-    console.log(info);
-    console.log("loading=========");
-  }
-  else {
   return (
     <View style={styles.container}>
       <Header navigation={navigation} route={route} />
@@ -34,7 +31,6 @@ const InfoComp = ({ navigation, route }) => {
       </View>
     </View>
   )}
-}
 const styles = StyleSheet.create({
   container: {
     flex: 1,
