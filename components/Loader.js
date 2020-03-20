@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { View, Text, StyleSheet, Platform, Image } from 'react-native';
-import AnimatedLoader from 'react-native-animated-loader';
 
 import Colors from '../constants/Colors';
 import Layout from '../constants/Layout';
