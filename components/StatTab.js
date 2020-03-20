@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Platform, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, Platform, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 
 import Layout from '../constants/Layout';
 import { headerHeight } from './Header';
 import Colors from '../constants/Colors';
+import StatDetail from '../components/StatDetail';
 
 const DataRow = ({ i }) => {
 	return (
@@ -12,16 +13,16 @@ const DataRow = ({ i }) => {
 				<Text style={[styles.row_text, { color: Colors.flat_anthracite }]}>{i.country}</Text>
 			</View>
 			<View style={styles.row_case}>
-				<Text style={[styles.row_text, { color: Colors.coralPink }]}>{i.totalCases}</Text>
+				<Text style={[styles.row_nb, { color: Colors.coralPink }]}>{i.totalCases}</Text>
 			</View>
 			<View style={styles.row_case}>
-				<Text style={[styles.row_text, { color: Colors.flat_orange }]}>{i.newCases}</Text>
+				<Text style={[styles.row_nb, { color: Colors.flat_orange }]}>{i.newCases}</Text>
 			</View>
 			<View style={styles.row_case}>
-				<Text style={[styles.row_text, { color: Colors.flat_red }]}>{i.newDeaths}</Text>
+				<Text style={[styles.row_nb, { color: Colors.flat_red }]}>{i.newDeaths}</Text>
 			</View>
 			<View style={styles.row_case}>
-				<Text style={[styles.row_text, { color: Colors.flat_turquoise }]}>{i.totalRecovered}</Text>
+				<Text style={[styles.row_nb, { color: Colors.flat_turquoise }]}>{i.totalRecovered}</Text>
 			</View>
 		</View>
 	);
@@ -35,17 +36,8 @@ const DataTab = ({ countries_info }) => {
 const StatTab = ({ world_info, countries_info, navigation, route, today }) => {
 	return (
 		<ScrollView style={styles.body}>
-			<View style={styles.world}>
-				<Text style={styles.date}>{today.toLocaleUpperCase()}</Text>
-				<Text style={styles.title}>Cas de Coronavirus</Text>
-				<Text style={[styles.data, { color: Colors.coralPink }]}>{world_info.totalCases}</Text>
-				<Text style={styles.title}>Nouveaux cas aujourd'hui </Text>
-				<Text style={[styles.data, { color: Colors.flat_orange }]}>{world_info.newCases}</Text>
-				<Text style={styles.title}>Nombre de morts</Text>
-				<Text style={[styles.data, { color: Colors.flat_red }]}>{world_info.totalDeaths}</Text>
-				<Text style={styles.title}>Personnes soignées</Text>
-				<Text style={[styles.data, { color: Colors.flat_green }]}>{world_info.totalRecovered}</Text>
-			</View>
+			<StatDetail countries_info={countries_info} />
+
 			<View style={styles.detailTab}>
 				<View style={styles.headTab}>
 					<View style={styles.headTab_case}>
@@ -84,23 +76,9 @@ const styles = StyleSheet.create({
 	},
 
 	body: {
-		marginTop: Platform.OS === 'android' ? 25 + headerHeight : headerHeight,
-	},
-	world: {
-		flex: 1,
-		alignItems: 'center',
-		marginBottom: 20,
+		marginTop: headerHeight,
 	},
 
-	date: {
-		fontSize: 30,
-		color: Colors.lightBlue,
-		marginVertical: 5,
-		fontFamily: 'montserrat-thin',
-		textAlign: 'center',
-	},
-	title: { fontSize: 30, fontFamily: 'montserrat-light', letterSpacing: -2, color: Colors.lightBlue },
-	data: { fontSize: 50, fontFamily: 'montserrat-lightItalic' },
 	detailTab: { flex: 1, width: Layout.window.width, height: Layout.window.height - 80 - headerHeight },
 	headTab: {
 		display: 'flex',
@@ -133,16 +111,14 @@ const styles = StyleSheet.create({
 		borderColor: Colors.lightBlue,
 	},
 	row_case: {
-		width: Layout.window.width / 5,
 		height: 100,
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
-		borderWidth: 1,
-		borderColor: Colors.lightBlue,
 		borderLeftWidth: 0,
 	},
-	row_text: { color: '#000', fontSize: 20 },
+	row_text: { color: '#000', fontSize: 10 },
+	row_nb: { color: '#000', fontSize: 20 },
 });
 
 export default StatTab;

@@ -10,12 +10,11 @@ import Search from '../screens/Search/Search';
 import AlertComp from '../screens/Alert/Alert';
 
 /*Constants */
-import Colors from '../constants/Colors'
+import Colors from '../constants/Colors';
 
 const BottomTab = createBottomTabNavigator();
 
 const INITIAL_ROUTE_NAME = 'homescreen';
-
 export default function BottomTabNavigator({ navigation, route }) {
 	// Set the header title on the parent stack navigator depending on the
 	// currently active tab. Learn more in the documentation:
@@ -30,6 +29,9 @@ export default function BottomTabNavigator({ navigation, route }) {
 			screenOptions={{ gestureEnabled: false }}
 			options={{
 				title: 'root',
+			}}
+			tabBarOptions={{
+				style: { height: 50 },
 			}}
 		>
 			<BottomTab.Screen
