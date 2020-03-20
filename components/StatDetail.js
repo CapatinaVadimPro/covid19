@@ -5,6 +5,12 @@ import Layout from '../constants/Layout';
 import { headerHeight } from './Header';
 import Colors from '../constants/Colors';
 
+const countryJSON = require('../constants/Countries.json');
+const countryTabEN = Object.keys(countryJSON);
+const countryTabFR = Object.values(countryJSON);
+
+const errorMSG = "Aucun résultat";
+
 const CountryInfoDetail = ({ country }) => {
 	console.log(country);
 
@@ -21,15 +27,27 @@ const CountryInfoDetail = ({ country }) => {
 		</View>
 	);
 };
+
 const StatDetail = props => {
 	console.log('statDetail');
 
 	const [countryFocus, setCountryFocus] = useState('France');
 	const [typingText, setTypingText] = useState(countryFocus);
-	const errorMSG = "Your request didn't return any result...";
+	const [displayScreen, setDisplay] = useState(true);
+
 	const worldInfo = props.countries_info.find(data => data.country === 'Total:');
 	const getFocusedCountry = props.countries_info.find(data => data.country === countryFocus);
-	const [displayScreen, setDisplay] = useState(true);
+
+	function handleSubmit(input) {
+		const indexFR = countryTabFR.indexOf(input);
+		console.log(indexFR);
+
+		const country_nameEN = indexFR === -1 ? 'error' : countryTabEN[indexFR];
+		console.log(country_nameEN);
+
+		setCountryFocus(country_nameEN);
+		return 1;
+	}
 	return (
 		<View>
 			<View style={styles.buttonTab}>
@@ -47,7 +65,9 @@ const StatDetail = props => {
 						displayScreen ? setDisplay(false) : null;
 					}}
 				>
-					<Text style={styles.text}>{typingText === '' ? countryFocus : typingText}</Text>
+					<Text style={styles.text}>
+						{typingText === '' ? countryTabFR[countryTabEN.indexOf(countryFocus)] : typingText}
+					</Text>
 				</TouchableOpacity>
 			</View>
 			{displayScreen ? (
@@ -61,13 +81,20 @@ const StatDetail = props => {
 							placeholder={'Chercher un pays'}
 							clearButtonMode={'always'}
 							enablesReturnKeyAutomatically
-							onSubmitEditing={event => setCountryFocus(event.nativeEvent.text)}
+							onSubmitEditing={event => {
+								const text = event.nativeEvent.text;
+								handleSubmit(text);
+							}}
 						/>
 					</View>
+					{console.log('get focused country')}
+					{console.log(countryFocus)}
+					{console.log('get focused country')}
+					{console.log(getFocusedCountry)}
 					{getFocusedCountry === undefined ? (
-						<Text>{errorMSG}</Text>
+						<Text style={styles.text}>{errorMSG}</Text>
 					) : (
-						<View>
+						<View style={styles.detail_cont}>
 							<Text style={styles.title}>Cas de Coronavirus</Text>
 							<Text style={[styles.data, { color: Colors.coralPink }]}>
 								{getFocusedCountry.totalCases}
