@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Platform, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, Platform, StyleSheet, ScrollView, TouchableOpacity, TextInput } from 'react-native';
 
 import Layout from '../constants/Layout';
 import { headerHeight } from './Header';
 import Colors from '../constants/Colors';
 
-const CountryInfoDetail = ({ country, hasInput }) => {
+const CountryInfoDetail = ({ country }) => {
 	console.log(country);
 
 	return (
 		<View style={styles.detail_cont}>
-            {hasInput ? <Text>hasInput</Text> : null}
 			<Text style={styles.title}>Cas de Coronavirus</Text>
 			<Text style={[styles.data, { color: Colors.coralPink }]}>{country.totalCases}</Text>
 			<Text style={styles.title}>Nouveaux cas aujourd'hui </Text>
@@ -25,7 +24,8 @@ const CountryInfoDetail = ({ country, hasInput }) => {
 const StatDetail = props => {
 	console.log('statDetail');
 
-	const countryFocus = 'France';
+	const [countryFocus, setCountryFocus] = useState('France');
+	const [typingText, setTypingText] = useState(countryFocus);
 	const errorMSG = "Your request didn't return any result...";
 	const worldInfo = props.countries_info.find(data => data.country === 'Total:');
 	const getFocusedCountry = props.countries_info.find(data => data.country === countryFocus);
@@ -47,13 +47,46 @@ const StatDetail = props => {
 						displayScreen ? setDisplay(false) : null;
 					}}
 				>
-					<Text style={styles.text}>{countryFocus}</Text>
+					<Text style={styles.text}>{typingText === '' ? countryFocus : typingText}</Text>
 				</TouchableOpacity>
 			</View>
 			{displayScreen ? (
 				<CountryInfoDetail country={worldInfo} />
 			) : (
-				<CountryInfoDetail country={getFocusedCountry} hasInput />
+				<View style={styles.detail_cont}>
+					<View style={styles.input_cont}>
+						<TextInput
+							style={styles.input_field}
+							onChangeText={text => setTypingText(text)}
+							placeholder={'Chercher un pays'}
+							clearButtonMode={'always'}
+							enablesReturnKeyAutomatically
+							onSubmitEditing={event => setCountryFocus(event.nativeEvent.text)}
+						/>
+					</View>
+					{getFocusedCountry === undefined ? (
+						<Text>{errorMSG}</Text>
+					) : (
+						<View>
+							<Text style={styles.title}>Cas de Coronavirus</Text>
+							<Text style={[styles.data, { color: Colors.coralPink }]}>
+								{getFocusedCountry.totalCases}
+							</Text>
+							<Text style={styles.title}>Nouveaux cas aujourd'hui </Text>
+							<Text style={[styles.data, { color: Colors.flat_orange }]}>
+								{getFocusedCountry.newCases}
+							</Text>
+							<Text style={styles.title}>Nombre de morts</Text>
+							<Text style={[styles.data, { color: Colors.flat_red }]}>
+								{getFocusedCountry.totalDeaths}
+							</Text>
+							<Text style={styles.title}>Personnes soignées</Text>
+							<Text style={[styles.data, { color: Colors.flat_green }]}>
+								{getFocusedCountry.totalRecovered}
+							</Text>
+						</View>
+					)}
+				</View>
 			)}
 		</View>
 	);
@@ -148,6 +181,8 @@ const styles = StyleSheet.create({
 		borderLeftWidth: 0,
 	},
 	row_text: { color: '#000', fontSize: 20 },
+	input_cont: { flex: 1, alignItems: 'center', justifyContent: 'center', marginVertical: 15 },
+	input_field: { height: 40, width: Layout.window.width / 1.25, borderWidth: 2, padding: 10, borderRadius: 10 },
 });
 
 export default StatDetail;
