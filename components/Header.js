@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
 	},
 	header: {
 		position: 'absolute',
-		marginTop: Platform.OS === 'android' ? 25 : 0,
+		marginTop: 0,
 		flex: 1,
 		flexDirection: 'row',
 		height: headerHeight,

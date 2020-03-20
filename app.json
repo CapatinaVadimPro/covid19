@@ -1,31 +1,33 @@
 {
-  "expo": {
-    "name": "Covid Info App",
-    "slug": "COVID_19",
-    "privacy": "public",
-    "sdkVersion": "36.0.0",
-    "platforms": [
-      "ios",
-      "android",
-      "web"
-    ],
-    "version": "0.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
-    "splash": {
-      "image": "./assets/images/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "ios": {
-      "supportsTablet": true
-    }
-  }
+	"expo": {
+		"name": "Covid Info App",
+		"slug": "COVID_19",
+		"description": "Find data about the coronavirus in the world",
+		"privacy": "public",
+		"sdkVersion": "36.0.0",
+		"platforms": ["ios", "android", "web"],
+		"version": "0.0.0",
+		"githubUrl": "https://github.com/CapatinaVadimPro/covid19",
+		"orientation": "portrait",
+		"icon": "./assets/images/icon_bugs.png",
+		"primaryColor": "#1abc9c",
+		"scheme": "myapp",
+		"splash": {
+			"image": "./assets/images/splash_bugs.png",
+			"resizeMode": "contain",
+			"backgroundColor": "#ffffff"
+		},
+		"updates": {
+			"fallbackToCacheTimeout": 0
+		},
+		"assetBundlePatterns": ["**/*"],
+		"ios": {
+			"supportsTablet": true
+		},
+		"androidStatusBar": {
+			"barStyle": "light-content",
+
+			"backgroundColor": "#000000"
+		}
+	}
 }

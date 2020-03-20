@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
 	},
 
 	body: {
-		marginTop: Platform.OS === 'android' ? 25 + headerHeight : headerHeight,
+		marginTop: headerHeight,
 	},
 });
 
