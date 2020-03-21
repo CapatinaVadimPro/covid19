@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Platform, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, Platform, StyleSheet, ScrollView, SafeAreaView } from 'react-native';
 import moment from 'moment';
 import Colors from '../../../constants/Colors';
 import axios from 'axios';
@@ -51,7 +51,7 @@ const StatsCov = ({ navigation, route }) => {
 		getCountryData();
 	}, []);
 	return (
-		<View style={styles.container}>
+		<SafeAreaView style={styles.container}>
 			<Header navigation={navigation} route={route} />
 			{world_info.status === 200 && countries_info.status === 200 ? (
 				<StatTab
@@ -65,7 +65,7 @@ const StatsCov = ({ navigation, route }) => {
 			) : (
 				<Loader />
 			)}
-		</View>
+		</SafeAreaView>
 	);
 };
 const styles = StyleSheet.create({

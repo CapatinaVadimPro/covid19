@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Text, StyleSheet, Platform, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Platform, TouchableOpacity,SafeAreaView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 import Colors from '../constants/Colors';
@@ -7,7 +7,7 @@ import Layout from '../constants/Layout';
 
 const Header = ({ navigation, route }) => {
 	return (
-		<View style={styles.header}>
+		<SafeAreaView style={styles.header}>
 			<TouchableOpacity style={styles.button} title="<" onPress={() => navigation.goBack()}>
 				<Ionicons
 					name={'ios-arrow-round-back'}
@@ -17,7 +17,7 @@ const Header = ({ navigation, route }) => {
 				/>
 			</TouchableOpacity>
 			<Text style={styles.text}>{route.params.name}</Text>
-		</View>
+		</SafeAreaView>
 	);
 };
 export const headerHeight = 60;

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Platform, StatusBar, StyleSheet, View } from 'react-native';
+import { Platform, StatusBar, StyleSheet, View,SafeAreaView } from 'react-native';
 import { SplashScreen } from 'expo';
 import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
@@ -54,7 +54,7 @@ export default function App(props) {
 		return null;
 	} else {
 		return (
-			<View style={styles.container}>
+			<SafeAreaView style={styles.container}>
 				{Platform.OS === 'ios' && <StatusBar barStyle="default" />}
 				<NavigationContainer style={styles.container} ref={containerRef} initialState={initialNavigationState}>
 					<Stack.Navigator
@@ -66,7 +66,7 @@ export default function App(props) {
 						<Stack.Screen name="Root" component={BottomTabNavigator} />
 					</Stack.Navigator>
 				</NavigationContainer>
-			</View>
+			</SafeAreaView>
 		);
 	}
 }
