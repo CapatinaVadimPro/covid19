@@ -6,11 +6,17 @@ import { headerHeight } from './Header';
 import Colors from '../constants/Colors';
 import StatDetail from '../components/StatDetail';
 
+const countryJSON = require('../constants/Countries.json');
+const countryTabEN = Object.keys(countryJSON);
+const countryTabFR = Object.values(countryJSON);
+
 const DataRow = ({ i }) => {
 	return (
 		<View style={styles.row}>
 			<View style={styles.row_case}>
-				<Text style={[styles.row_text, { color: Colors.flat_anthracite }]}>{i.country}</Text>
+				<Text style={[styles.row_text, { color: Colors.flat_anthracite }]}>
+					{countryTabEN.indexOf(i.country) !== -1 ? countryTabFR[countryTabEN.indexOf(i.country)] : i.country}
+				</Text>
 			</View>
 			<View style={styles.row_case}>
 				<Text style={[styles.row_nb, { color: Colors.coralPink }]}>{i.totalCases}</Text>
@@ -65,10 +71,6 @@ const StatTab = ({ world_info, countries_info, navigation, route, today }) => {
 };
 
 const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: Colors.lightGrey,
-	},
 	text: {
 		fontSize: 30,
 		marginTop: 1,
@@ -79,7 +81,7 @@ const styles = StyleSheet.create({
 		marginTop: headerHeight,
 	},
 
-	detailTab: { flex: 1, width: Layout.window.width, height: Layout.window.height - 80 - headerHeight },
+	detailTab: { flex: 1, width: Layout.window.width, height: Layout.window.height - (headerHeight + 25) },
 	headTab: {
 		display: 'flex',
 		flexDirection: 'row',

@@ -1,13 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Platform, StatusBar, StyleSheet, View,SafeAreaView } from 'react-native';
+import { Platform, StatusBar, StyleSheet, View, SafeAreaView } from 'react-native';
 import { SplashScreen } from 'expo';
 import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import Colors from './constants/Colors'
+import Colors from './constants/Colors';
 import BottomTabNavigator from './navigation/BottomTabNavigator';
+import DrawerNavigator from './navigation/DrawerNavigator';
 import useLinking from './navigation/useLinking';
 
 const Stack = createStackNavigator();
@@ -29,15 +30,14 @@ export default function App(props) {
 				await Font.loadAsync({
 					...Ionicons.font,
 					'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
-					'montserrat': require('./assets/fonts/Montserrat-Regular.ttf'),
+					montserrat: require('./assets/fonts/Montserrat-Regular.ttf'),
 					'montserrat-light': require('./assets/fonts/Montserrat-Light.ttf'),
-					'montserrat-semiBold' : require('./assets/fonts/Montserrat-SemiBold.ttf'),
+					'montserrat-semiBold': require('./assets/fonts/Montserrat-SemiBold.ttf'),
 					'montserrat-bold': require('./assets/fonts/Montserrat-Bold.ttf'),
-					'montserrat-thin' : require('./assets/fonts/Montserrat-Thin.ttf'),
-					'montserrat-lightItalic' : require('./assets/fonts/Montserrat-LightItalic.ttf'),
-					'montserrat-light' : require('./assets/fonts/Montserrat-Light.ttf'),
-					'montserrat-italic' : require('./assets/fonts/Montserrat-Italic.ttf')
-
+					'montserrat-thin': require('./assets/fonts/Montserrat-Thin.ttf'),
+					'montserrat-lightItalic': require('./assets/fonts/Montserrat-LightItalic.ttf'),
+					'montserrat-light': require('./assets/fonts/Montserrat-Light.ttf'),
+					'montserrat-italic': require('./assets/fonts/Montserrat-Italic.ttf'),
 				});
 			} catch (e) {
 				// We might want to provide this error information to an error reporting service
@@ -63,7 +63,7 @@ export default function App(props) {
 						}}
 						style={styles.navigator}
 					>
-						<Stack.Screen name="Root" component={BottomTabNavigator} />
+						<Stack.Screen name="Root" component={DrawerNavigator} />
 					</Stack.Navigator>
 				</NavigationContainer>
 			</SafeAreaView>
@@ -74,6 +74,6 @@ export default function App(props) {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: Colors.lightGrey,
+		backgroundColor: Colors.backgroundTint,
 	},
 });

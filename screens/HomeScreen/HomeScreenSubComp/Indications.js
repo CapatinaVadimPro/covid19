@@ -52,7 +52,7 @@ const Indication = ({ navigation, route }) => {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: Colors.lightGrey,
+		backgroundColor: Colors.backgroundTint,
 	},
 	text: {
 		fontSize: 30,

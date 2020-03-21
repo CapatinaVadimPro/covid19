@@ -1,6 +1,7 @@
 const tintColor = '#2f95dc';
 
 export default {
+	backgroundTint: '#ffffff',
 	lightGrey: '#D5E5F2',
 	darkBlue: '#011826',
 	lightBlue: '#7AACBF',
@@ -13,6 +14,8 @@ export default {
 	flat_turquoise: '#1abc9c',
 	flat_purple: '#9b59b6',
 	flat_anthracite: '#34495e',
+	perfect_purple: '#191b33',
+	mint_blue: '#00f5faa5',
 
 	tintColor,
 	tabIconDefault: '#ccc',

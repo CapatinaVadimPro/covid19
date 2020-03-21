@@ -39,7 +39,12 @@ const SectionRedirect = ({ navigation, picSource, name, component }) => {
 };
 
 const Home = ({ navigation }) => {
-	console.log(navigation);
+	function openClose(navigation) {
+		navigation.openDrawer();
+		setTimeout(() => {
+			navigation.closeDrawer();
+		}, 500);
+	}
 
 	return (
 		<SafeAreaView style={styles.container}>
@@ -80,7 +85,7 @@ const HomeScreen = ({ route, navigation }) => {
 		</Stack.Navigator>
 	);
 };
-const pageHeight = Layout.window.height - (50 + 24);
+const pageHeight = Layout.window.height - 24;
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
