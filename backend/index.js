@@ -38,6 +38,12 @@ app.get('/all-country/:country', (req, res) => {
         });
 });
 
+app.get('/all-actu', (req, res) => {
+  scrapper.getAllActu().then(data => {
+    res.send(data);
+  });
+});
+
 /*
 app.get("/recoverd", (req, res) => {
   scraper.getArticleUbdx(req.params.category, req.params.link).then(article => {
