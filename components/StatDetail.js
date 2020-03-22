@@ -14,7 +14,6 @@ const countryTabFR = Object.values(countryJSON);
 const errorMSG = 'Aucun résultat';
 
 const CountryInfoDetail = ({ country }) => {
-	console.log(country);
 	var date = moment();
 	date.locale('fr', localization);
 	const today = date.format('L');

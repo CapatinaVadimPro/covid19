@@ -15,6 +15,7 @@ const Indication = ({ navigation, route }) => {
 			<View style={styles.body}>
 				<ScrollView horizontal pagingEnabled>
 					<ParrallaxContent info={indicationJSON.COVID_19} />
+					<ParrallaxContent info={indicationJSON.STAY_HOME} />
 					<ParrallaxContent info={indicationJSON.HAND_WASH_NO_CONTACT} />
 					<ParrallaxContent info={indicationJSON.NOSE_PAPER} />
 					<ParrallaxContent info={indicationJSON.WEAR_MASK} />

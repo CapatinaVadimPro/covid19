@@ -4,9 +4,7 @@ import { createDrawerNavigator, DrawerView, DrawerContent, DrawerItem, DrawerIte
 
 import { HeaderTitle } from '@react-navigation/stack';
 /*Components */
-import TabBarIcon from '../components/TabBarIcon';
 import AboutBugs from '../components/AboutBugs';
-import Settings from '../components/Settings';
 import HomeScreen from '../screens/HomeScreen/HomeScreen';
 
 import Colors from '../constants/Colors';
@@ -14,7 +12,7 @@ import Layout from '../constants/Layout';
 
 const Drawer = createDrawerNavigator();
 
-const DrawerNavigator = ({ route }) => {
+const DrawerNavigator = ({ route, navigation }) => {
 	return (
 		<Drawer.Navigator
 			drawerType="front"
@@ -24,6 +22,7 @@ const DrawerNavigator = ({ route }) => {
 			drawerStyle={{
 				backgroundColor: '#fff',
 				width: 250,
+				flex: 1,
 			}}
 			drawerContentOptions={{
 				activeTintColor: 'white',
@@ -35,8 +34,11 @@ const DrawerNavigator = ({ route }) => {
 			initialRouteName="general"
 		>
 			<Drawer.Screen name="general" component={HomeScreen} options={{ drawerLabel: 'Général' }} />
-			<Drawer.Screen name="about" component={AboutBugs} options={{ drawerLabel: 'À propos' }} />
-			<Drawer.Screen name="settings" component={HomeScreen} options={{ drawerLabel: 'Paramètres' }} />
+			<Drawer.Screen
+				name="about"
+				component={HomeScreen}
+				options={{ drawerLabel: () => <AboutBugs navigation={navigation} /> }}
+			/>
 		</Drawer.Navigator>
 	);
 };

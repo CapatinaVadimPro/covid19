@@ -9,6 +9,15 @@
 		"src1_name": "gouvernement.fr",
 		"src2_name": "who.int"
 	},
+	"STAY_HOME": {
+		"title": "Restez chez vous au maximum",
+		"sub_title": "Ne sortez pas sans raison valable",
+		"text1": "En effet, la mesure de confinement prise par de plus en plus de pays dans le monde n'est pas la pour faire joli, si beaucoup de citoyens français semblent faire fît de cette mesure ce n'est pas pour autant que c'est la marche à suivre. Et oui car même si vous semblez protegés grâce au port de masque, gants ou tout autre type de protection, le virus est très volatile, il se posera sur vos vêtements, votre peau et cela peut importe vos protection, en plus de s'y poser il y vivra, parfos quelques heures, parfois quelques jours. Se confiner c'est éviter de transporter le virus partout, déjà chez vous mais également chez les autres. Même si vous n'attrapez jamais ce virus, si vous sortez les chances que vous commenciez a le transporter sont très grandes, tout contact avec une autre personne peut alors avoir de lourdes conséquences, chez les plus faibles cela engendrera probablement des états critiques.",
+		"text2": "Dans notre pays le confinement est pour le moment, dimanche 22 mars, de 15 jours (renouvelable), cela correspond au temps d'incubation du virus. Le gouvernement tient absolument a limiter les déplacements et à donc mit en place des amendes jusqu'à 135€ pour les personnes qui sortiraient sans raison valable, à savoir des besoins vitaux comme se réapprovisionner en nourriture par exemple. Les pages suivantes vous expliqueront les bons gestes à avoir pour lutter encore plus efficaement contre le virus.",
+		"src1": "",
+		"img": "https://images.unsplash.com/photo-1525847664954-bcd1e64c6ad8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
+		"src1_name": null
+	},
 	"HAND_WASH_NO_CONTACT": {
 		"title": "Se laver les mains et eviter les contacts",
 		"text1": "Le Covid-19 se transmet par la salive, les gouttelettes dues à la toux ou aux éternuements, par contact rapproché avec des malades comme des poignées de main ou des embrassades et par contact avec des surfaces contaminées. Une étude semble indiquer que le Covid-19 serait viable plusieurs heures sur différentes surfaces, jusqu'à 24 heures sur du carton et jusqu'à 2-3 jours sur du plastique et l'acier inoxydable.",

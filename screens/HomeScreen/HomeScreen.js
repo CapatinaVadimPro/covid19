@@ -112,12 +112,12 @@ const styles = StyleSheet.create({
 	},
 	sectionContainer: {
 		width: Layout.window.width / 2,
-		height: pageHeight / 2,
+		height: pageHeight / 2 + 25,
 		flex: 1,
 	},
 	sectionContainer_large: {
 		width: Layout.window.width,
-		height: pageHeight / 2,
+		height: pageHeight / 2 + 25,
 		flex: 1,
 	},
 });

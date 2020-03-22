@@ -1,51 +1,50 @@
 import * as React from 'react';
-import { View, Text, StyleSheet, Platform, TouchableOpacity,SafeAreaView } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-
-import Colors from '../constants/Colors';
+import { Button, View, Text, Image, StyleSheet } from 'react-native';
+import { DrawerItem } from '@react-navigation/drawer';
+import { Linking } from 'expo';
 import Layout from '../constants/Layout';
 
-const Header = ({ navigation, route }) => {
+const AboutBugs = ({ navigation }) => {
+	const linkRedirect = () => {
+		Linking.canOpenURL('https://bugsminers.com').then(supported => {
+			if (supported) {
+				Linking.openURL('https://bugsminers.com');
+			} else {
+				console.log("Don't know how to open URI: 'https://bugsminers.com' ");
+			}
+		});
+	};
 	return (
-		<View style={styles.header}>
-			<TouchableOpacity style={styles.button} title="<" onPress={() => navigation.goBack()}>
-				<Ionicons
-					name={'ios-arrow-round-back'}
-					size={50}
-					style={{ marginBottom: -3 }}
-					color={Colors.lightBlue}
-				/>
-			</TouchableOpacity>
-			<Text style={styles.text}>A propos</Text>
-		</View>
+		<DrawerItem
+			label=""
+			onPress={() => linkRedirect()}
+			style={{ marginTop: Layout.window.height / 1.7 }}
+			icon={() => (
+				<View style={styles.profile_pic_container} onPress={() => linkRedirect()}>
+					<Image style={styles.profile_pic} source={require('../assets/images/icon_bugs.png')} />
+				</View>
+			)}
+		/>
 	);
 };
-export const headerHeight = 60;
+const picture_container = 150;
 const styles = StyleSheet.create({
-	text: {
-		fontSize: 16,
-		marginTop: 1,
-		color: Colors.lightBlue,
+	container: { flex: 1, flexDirection: 'row', width: 250, marginLeft: 10 },
+	profile_pic_container: {
+		borderRadius: 50,
+		overflow: 'hidden',
+		marginRight: -80,
 	},
-	header: {
-		position: 'absolute',
-		marginTop: 0,
-		flex: 1,
-		flexDirection: 'row',
-		height: headerHeight,
-		width: Layout.window.width,
-		top: 0,
-		zIndex: 100,
-		backgroundColor: Colors.backgroundTint,
-		alignItems: 'center',
+	profile_pic: {
+		width: picture_container,
+		height: picture_container,
+		resizeMode: 'cover',
 	},
-	button: {
-		display: 'flex',
-		alignItems: 'center',
-		justifyContent: 'center',
-		width: headerHeight,
-		height: headerHeight,
-	},
+	text_container: { flex: 1 },
+	text: { color: '#fff', marginVertical: 3 },
+	name: { fontSize: 20, fontWeight: '500' },
+	rank: { fontSize: 15 },
+	follower: { fontSize: 15, width: 200 },
 });
 
-export default Header;
+export default AboutBugs;

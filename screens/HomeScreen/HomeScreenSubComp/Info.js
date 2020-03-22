@@ -3,56 +3,67 @@ import { View, Text, StyleSheet, Platform, ScrollView } from 'react-native';
 import axios from 'axios';
 import { FirstADR } from 'react-native-dotenv';
 import { Linking } from 'expo';
+import moment from 'moment';
+import localization from 'moment/locale/fr';
 
 import Colors from '../../../constants/Colors';
 
 import Header, { headerHeight } from '../../../components/Header';
 import Loader from '../../../components/Loader';
 
-function uuidv4() {
-	return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-		var r = (Math.random() * 16) | 0,
-			v = c == 'x' ? r : (r & 0x3) | 0x8;
-		return v.toString(16);
-	});
-}
-
 const ActuRow = ({ actu }) => {
+	var date = moment();
+	date.locale('fr', localization);
+	const today = date.format('L');
 	const [nblines, setNblines] = useState(3);
+	const [seen, hasBeenSeen] = useState(today === actu.date ? false : true);
 	const handlePress = () => {
 		nblines === 3 ? setNblines(100) : setNblines(3);
+		seen ? null : hasBeenSeen(true);
 	};
 	const linkRedirect = () => {
-		Linking.canOpenURL(actu.src).then(supported => {
+		Linking.canOpenURL(actu.link).then(supported => {
 			if (supported) {
-				Linking.openURL(actu.src);
+				Linking.openURL(actu.link);
 			} else {
-				console.log("Don't know how to open URI: " + actu.src);
+				console.log("Don't know how to open URI: " + actu.link);
 			}
 		});
 	};
 
 	return (
 		<View style={styles.actu_cont}>
-			<Text style={styles.date}>{actu.date}</Text>
-			<Text style={styles.title}>{actu.title.toUpperCase()}</Text>
-			<Text style={styles.desc} numberOfLines={nblines} onPress={() => handlePress()}>
+			<Text style={[styles.date, { fontFamily: seen ? 'montserrat-semiBold' : 'montserrat-bold' }]}>
+				{actu.date}
+			</Text>
+			<Text style={[styles.date, { fontFamily: seen ? 'montserrat-semiBold' : 'montserrat-bold', fontSize: 10 }]}>
+				{actu.time}
+			</Text>
+			<Text style={[styles.title, { fontFamily: seen ? 'montserrat-semiBold' : 'montserrat-bold' }]}>
+				{actu.title.toUpperCase()}
+			</Text>
+			<Text
+				style={[styles.desc, { fontFamily: seen ? 'montserrat-light' : 'montserrat-semiBold' }]}
+				numberOfLines={nblines}
+				onPress={() => handlePress()}
+			>
 				{actu.description}
 			</Text>
-			{nblines === 3 ? (
-				<Text style={styles.learn}>Clique pour en savoir plus</Text>
-			) : (
-				<Text style={styles.src} onPress={() => linkRedirect()}>
-					Lien vers l'article
+			{nblines === 3 && actu.description ? (
+				<Text style={[styles.learn, { fontFamily: seen ? 'montserrat-lightItalic' : 'montserrat-bold' }]}>
+					Clique pour en savoir plus
 				</Text>
-			)}
+			) : null}
+			<Text style={styles.src} onPress={() => linkRedirect()}>
+				Lien vers l'article
+			</Text>
 		</View>
 	);
 };
 
 const ActuArray = ({ actuTab }) => {
 	console.log(actuTab);
-	const array = actuTab.map(actu => <ActuRow key={uuidv4()} actu={actu} />);
+	const array = actuTab.map(actu => <ActuRow key={actu.id} actu={actu} />);
 	console.log(array);
 
 	return array;
@@ -107,7 +118,6 @@ const styles = StyleSheet.create({
 		fontSize: 12,
 		marginTop: 5,
 		color: Colors.lightBlue,
-		fontFamily: 'montserrat-semiBold',
 		textAlign: 'right',
 		marginRight: 15,
 	},
@@ -119,10 +129,10 @@ const styles = StyleSheet.create({
 	desc: {
 		fontSize: 12,
 		marginTop: 5,
-		color: Colors.flat_anthracite,
+		color: '#1b1b1b',
+		paddingLeft: 5,
 	},
 	learn: {
-		fontFamily: 'montserrat-lightItalic',
 		fontSize: 10,
 		color: Colors.tabIconDefault,
 		textDecorationLine: 'underline',
