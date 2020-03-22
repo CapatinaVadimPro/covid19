@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, Platform, StyleSheet, ScrollView, TouchableOpacity, TextInput } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
 import moment from 'moment';
 import localization from 'moment/locale/fr';
 
 import Layout from '../constants/Layout';
-import { headerHeight } from './Header';
 import Colors from '../constants/Colors';
 
 const countryJSON = require('../constants/Countries.json');
@@ -62,6 +61,7 @@ const CountryInfoDetail = ({ country }) => {
 		</View>
 	);
 };
+
 const StatDetail = props => {
 	const [countryFocus, setCountryFocus] = useState('France');
 	const [typingText, setTypingText] = useState(countryFocus);
@@ -71,8 +71,10 @@ const StatDetail = props => {
 
 	function handleSubmit(input) {
 		const indexFR = countryTabFR.indexOf(input);
+		const indexEN = countryTabEN.indexOf(input);
 
-		const country_nameEN = indexFR === -1 ? 'error' : countryTabEN[indexFR];
+		const country_nameEN =
+			indexFR === -1 ? (indexEN === -1 ? 'error' : countryTabEN[indexEN]) : countryTabEN[indexFR];
 
 		setCountryFocus(country_nameEN);
 		return 1;
@@ -109,7 +111,9 @@ const StatDetail = props => {
 					<View style={styles.large_container}>
 						<TextInput
 							style={styles.input_field}
-							onChangeText={text => setTypingText(text)}
+							onChangeText={text => {
+								setTypingText(text);
+							}}
 							placeholder={'Chercher un pays'}
 							clearButtonMode={'always'}
 							enablesReturnKeyAutomatically

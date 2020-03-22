@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, createRef } from 'react';
 import { View, Text, Platform, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 
 import Layout from '../constants/Layout';
@@ -9,8 +9,8 @@ import StatDetail from '../components/StatDetail';
 const countryJSON = require('../constants/Countries.json');
 const countryTabEN = Object.keys(countryJSON);
 const countryTabFR = Object.values(countryJSON);
-
-const DataRow = ({ i }) => {
+//onPress={() => scroll.scrollTo({ x: 0, y: 0, animated: true })}
+const DataRow = ({ i, scroll }) => {
 	return (
 		<View style={styles.row}>
 			<View style={styles.row_case}>
@@ -34,14 +34,15 @@ const DataRow = ({ i }) => {
 	);
 };
 
-const DataTab = ({ countries_info }) => {
-	const Array = countries_info.map(i => <DataRow key={i.id} i={i} />);
+const DataTab = ({ countries_info, scroll }) => {
+	const Array = countries_info.map(i => <DataRow key={i.id} i={i} scroll={scroll} />);
 	return Array;
 };
 
 const StatTab = ({ world_info, countries_info, navigation, route, today }) => {
+	const [scroll, setScroll] = useState();
 	return (
-		<ScrollView style={styles.body}>
+		<ScrollView style={styles.body} ref={c => setScroll(c)}>
 			<StatDetail countries_info={countries_info} />
 			<View style={styles.detailTab}>
 				<View style={styles.headTab}>
@@ -62,7 +63,7 @@ const StatTab = ({ world_info, countries_info, navigation, route, today }) => {
 					</View>
 				</View>
 				<ScrollView nestedScrollEnabled>
-					<DataTab countries_info={countries_info} />
+					<DataTab countries_info={countries_info} scroll={scroll} />
 				</ScrollView>
 			</View>
 		</ScrollView>
