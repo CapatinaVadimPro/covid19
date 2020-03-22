@@ -47,7 +47,7 @@ const StatsCov = ({ navigation, route }) => {
 		getCountryData();
 	}, []);
 	return (
-		<SafeAreaView style={styles.container}>
+		<View style={styles.container}>
 			<Header navigation={navigation} route={route} />
 			{world_info.status === 200 && countries_info.status === 200 ? (
 				<StatTab
@@ -60,7 +60,7 @@ const StatsCov = ({ navigation, route }) => {
 			) : (
 				<Loader />
 			)}
-		</SafeAreaView>
+		</View>
 	);
 };
 const styles = StyleSheet.create({

@@ -54,19 +54,44 @@ export default function App(props) {
 		return null;
 	} else {
 		return (
-			<SafeAreaView style={styles.container}>
-				{Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-				<NavigationContainer style={styles.container} ref={containerRef} initialState={initialNavigationState}>
-					<Stack.Navigator
-						screenOptions={{
-							headerShown: false,
-						}}
-						style={styles.navigator}
-					>
-						<Stack.Screen name="Root" component={DrawerNavigator} />
-					</Stack.Navigator>
-				</NavigationContainer>
-			</SafeAreaView>
+			<>
+				{Platform.OS === 'ios' ? (
+					<SafeAreaView style={styles.container}>
+						<StatusBar barStyle="default" />
+						<NavigationContainer
+							style={styles.container}
+							ref={containerRef}
+							initialState={initialNavigationState}
+						>
+							<Stack.Navigator
+								screenOptions={{
+									headerShown: false,
+								}}
+								style={styles.navigator}
+							>
+								<Stack.Screen name="Root" component={DrawerNavigator} />
+							</Stack.Navigator>
+						</NavigationContainer>
+					</SafeAreaView>
+				) : (
+					<View style={styles.container}>
+						<NavigationContainer
+							style={styles.container}
+							ref={containerRef}
+							initialState={initialNavigationState}
+						>
+							<Stack.Navigator
+								screenOptions={{
+									headerShown: false,
+								}}
+								style={styles.navigator}
+							>
+								<Stack.Screen name="Root" component={DrawerNavigator} />
+							</Stack.Navigator>
+						</NavigationContainer>
+					</View>
+				)}
+			</>
 		);
 	}
 }

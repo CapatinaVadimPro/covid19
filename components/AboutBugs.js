@@ -7,7 +7,7 @@ import Layout from '../constants/Layout';
 
 const Header = ({ navigation, route }) => {
 	return (
-		<SafeAreaView style={styles.header}>
+		<View style={styles.header}>
 			<TouchableOpacity style={styles.button} title="<" onPress={() => navigation.goBack()}>
 				<Ionicons
 					name={'ios-arrow-round-back'}
@@ -17,7 +17,7 @@ const Header = ({ navigation, route }) => {
 				/>
 			</TouchableOpacity>
 			<Text style={styles.text}>A propos</Text>
-		</SafeAreaView>
+		</View>
 	);
 };
 export const headerHeight = 60;

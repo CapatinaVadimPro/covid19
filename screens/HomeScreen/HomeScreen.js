@@ -47,7 +47,7 @@ const Home = ({ navigation }) => {
 	}
 
 	return (
-		<SafeAreaView style={styles.container}>
+		<View style={styles.container}>
 			<View style={styles.halfScreen}>
 				<SectionRedirect
 					navigation={navigation}
@@ -71,7 +71,7 @@ const Home = ({ navigation }) => {
 					onPress={() => navigation.navigate('InfoComp')}
 				/>
 			</View>
-		</SafeAreaView>
+		</View>
 	);
 };
 
