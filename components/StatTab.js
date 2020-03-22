@@ -43,7 +43,6 @@ const StatTab = ({ world_info, countries_info, navigation, route, today }) => {
 	return (
 		<ScrollView style={styles.body}>
 			<StatDetail countries_info={countries_info} />
-
 			<View style={styles.detailTab}>
 				<View style={styles.headTab}>
 					<View style={styles.headTab_case}>

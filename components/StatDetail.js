@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Platform, StyleSheet, ScrollView, TouchableOpacity, TextInput } from 'react-native';
 import moment from 'moment';
+import localization from 'moment/locale/fr';
 
 import Layout from '../constants/Layout';
 import { headerHeight } from './Header';
@@ -15,7 +16,7 @@ const errorMSG = 'Aucun résultat';
 const CountryInfoDetail = ({ country }) => {
 	console.log(country);
 	var date = moment();
-	date.locale('fr');
+	date.locale('fr', localization);
 	const today = date.format('L');
 	const hour = date.format('HH:MM');
 
