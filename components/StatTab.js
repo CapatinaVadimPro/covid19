@@ -14,7 +14,7 @@ const DataRow = ({ i }) => {
 	return (
 		<View style={styles.row}>
 			<View style={styles.row_case}>
-				<Text style={[styles.row_text, { color: Colors.flat_anthracite }]}>
+				<Text style={[styles.row_text, { color: Colors.flat_anthracite, fontFamily: 'montserrat-bold' }]}>
 					{countryTabEN.indexOf(i.country) !== -1 ? countryTabFR[countryTabEN.indexOf(i.country)] : i.country}
 				</Text>
 			</View>

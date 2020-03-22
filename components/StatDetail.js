@@ -177,7 +177,7 @@ const styles = StyleSheet.create({
 	half_cont: { width: Layout.window.width / 2, flex: 1 },
 	hour: {
 		fontSize: 15,
-		color: Colors.lightBlue,
+		color: Colors.flat_anthracite,
 		marginBottom: 10,
 		fontFamily: 'montserrat-thin',
 		textAlign: 'center',
@@ -187,11 +187,11 @@ const styles = StyleSheet.create({
 		fontSize: 25,
 		fontFamily: 'montserrat-light',
 		letterSpacing: -1,
-		color: Colors.lightBlue,
+		color: Colors.flat_anthracite,
 		textAlign: 'center',
 	},
 	sub_title: {
-		color: Colors.lightBlue,
+		color: Colors.flat_anthracite,
 		textAlign: 'center',
 		fontFamily: 'montserrat-thin',
 		fontSize: 20,

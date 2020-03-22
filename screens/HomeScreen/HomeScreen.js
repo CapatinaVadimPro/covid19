@@ -1,18 +1,7 @@
 import * as React from 'react';
-import {
-	Image,
-	ImageBackground,
-	Platform,
-	StyleSheet,
-	Text,
-	TouchableOpacity,
-	View,
-	SafeAreaView,
-	Button,
-	Animated,
-	Dimensions,
-} from 'react-native';
+import { ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { Ionicons } from '@expo/vector-icons';
 
 import Colors from '../../constants/Colors';
 import Layout from '../../constants/Layout';
@@ -48,6 +37,14 @@ const Home = ({ navigation }) => {
 
 	return (
 		<View style={styles.container}>
+			<TouchableOpacity style={styles.icon_cont} onPress={() => navigation.openDrawer()}>
+				<Ionicons
+					name="ios-arrow-forward"
+					size={60}
+					color="#fefefe62"
+					onPress={() => navigation.openDrawer()}
+				/>
+			</TouchableOpacity>
 			<View style={styles.halfScreen}>
 				<SectionRedirect
 					navigation={navigation}
@@ -120,6 +117,7 @@ const styles = StyleSheet.create({
 		height: pageHeight / 2 + 25,
 		flex: 1,
 	},
+	icon_cont: { position: 'absolute', zIndex: 900, left: 5 },
 });
 
 export default HomeScreen;
