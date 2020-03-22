@@ -8,8 +8,6 @@ import TabBarIcon from '../components/TabBarIcon';
 import AboutBugs from '../components/AboutBugs';
 import Settings from '../components/Settings';
 import HomeScreen from '../screens/HomeScreen/HomeScreen';
-import Search from '../screens/Search/Search';
-import AlertComp from '../screens/Alert/Alert';
 
 import Colors from '../constants/Colors';
 import Layout from '../constants/Layout';
