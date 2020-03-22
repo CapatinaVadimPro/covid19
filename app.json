@@ -22,7 +22,13 @@
 		},
 		"assetBundlePatterns": ["**/*"],
 		"ios": {
+			"bundleIdentifier": "com.bugsminers.covid19",
+			"buildNumber": "1.0.0",
 			"supportsTablet": true
+		},
+		"android": {
+			"package": "com.bugsminers.covid19",
+			"versionCode": 1
 		},
 		"androidStatusBar": {
 			"barStyle": "light-content",

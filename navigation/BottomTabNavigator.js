@@ -6,8 +6,6 @@ import { StyleSheet, TouchableOpacity } from 'react-native';
 /*Components */
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen/HomeScreen';
-import Search from '../screens/Search/Search';
-import AlertComp from '../screens/Alert/Alert';
 
 /*Constants */
 import Colors from '../constants/Colors';
