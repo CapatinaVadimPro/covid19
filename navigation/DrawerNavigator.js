@@ -19,7 +19,7 @@ const DrawerNavigator = ({ route }) => {
 		<Drawer.Navigator
 			drawerType="front"
 			drawerPosition={'left'}
-			edgeWidth={100}
+			edgeWidth={15}
 			overlayColor={'#1b1b1bf0'}
 			drawerStyle={{
 				backgroundColor: '#fff',

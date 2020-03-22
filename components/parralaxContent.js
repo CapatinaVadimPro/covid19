@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Animated, StyleSheet, Text, View } from 'react-native';
+import { Linking } from 'expo';
 
 import Layout from '../constants/Layout';
+import Colors from '../constants/Colors';
 
-const RenderHeader = ({ scrollOffset, picture, titre }) => {
+const RenderHeader = ({ scrollOffset, info }) => {
 	const expandedHeaderHeight = 240;
 	const collapsedHeaderHeight = 64;
 	const titleHeight = 44;
@@ -44,7 +46,7 @@ const RenderHeader = ({ scrollOffset, picture, titre }) => {
 					],
 				}}
 				source={{
-					uri: picture,
+					uri: info.img,
 				}}
 			/>
 			<Animated.View
@@ -81,37 +83,46 @@ const RenderHeader = ({ scrollOffset, picture, titre }) => {
 					],
 				}}
 			>
-				{titre}
+				{info.title}
 			</Animated.Text>
 		</Animated.View>
 	);
 };
 
-const RenderContent = ({titre}) => {
+const RenderContent = ({ info }) => {
+	const linkRedirect = link => {
+		Linking.canOpenURL(link).then(supported => {
+			if (supported) {
+				Linking.openURL(link);
+			} else {
+				console.log("Don't know how to open URI: " + link);
+			}
+		});
+	};
 	return (
 		<View style={{ padding: 20 }}>
-			<Text style={{ fontSize: 24, fontWeight: '800', marginBottom: 16 }}>{titre}</Text>
-			<Text>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus aliquam elementum nulla. Suspendisse
-				efficitur ante nibh, ac ullamcorper dolor malesuada vitae. Etiam cursus, urna sed eleifend mollis, urna
-				nunc commodo orci, imperdiet faucibus sapien quam ac sapien. Maecenas ac orci eros. Ut eget luctus
-				mauris. Nunc diam lacus, sollicitudin in sollicitudin id, facilisis a ex. Donec ac bibendum risus.
-				Aenean rutrum condimentum enim, in sagittis sem efficitur ut. Pellentesque ante odio, elementum eu
-				dictum et, interdum vel diam. Integer ut nibh quam. In nunc libero, molestie bibendum urna nec,
-				malesuada fermentum ante. Curabitur pulvinar purus sed placerat dignissim. Proin sed quam ut odio
-				consectetur ultrices ut vel augue. Nullam sit amet eros sapien. Ut porta nisl neque, nec rhoncus sem
-				viverra id. In accumsan libero at cursus suscipit. Aenean ac libero erat. Etiam suscipit justo ut libero
-				blandit laoreet. Fusce rutrum id quam sed vulputate. Fusce non orci facilisis, egestas nibh vitae,
-				ullamcorper metus. Curabitur et pharetra dolor. Aliquam vitae viverra mauris. Duis porta nunc neque, id
-				lacinia massa condimentum vitae. Aenean molestie, odio et eleifend porta, mauris odio rhoncus enim, et
-				commodo mauris velit vitae ante. Nulla consectetur, enim a rutrum porttitor, enim tortor rhoncus nibh,
-				non blandit turpis.
-			</Text>
+			<Text style={[styles.title, { marginBottom: info.sub_title ? 5 : 30 }]}>{info.title}</Text>
+			{info.sub_title ? <Text style={styles.sub_title}>{info.sub_title}</Text> : null}
+			<Text style={styles.text}>{info.text1}</Text>
+			{info.text2 ? <Text style={styles.text}>{info.text2}</Text> : null}
+			<View style={styles.src_cont}>
+				<Text style={{ marginBottom: 5, color: Colors.tabIconDefault, fontFamily: 'montserrat-italic' }}>
+					Sources :
+				</Text>
+				<Text style={styles.src} onPress={() => linkRedirect(info.src1)}>
+					{info.src1_name}
+				</Text>
+				{info.src2 ? (
+					<Text style={styles.src} onPress={() => linkRedirect(info.src2)}>
+						{info.src2_name}
+					</Text>
+				) : null}
+			</View>
 		</View>
 	);
 };
 
-const ParrallaxContent = ({ picture,titre }) => {
+const ParrallaxContent = ({ info }) => {
 	const [scrollOffset, setScrollOffset] = useState(new Animated.Value(0));
 	const scrollEvent = Animated.event([{ nativeEvent: { contentOffset: { y: scrollOffset } } }], {
 		useNativeDriver: true,
@@ -122,8 +133,8 @@ const ParrallaxContent = ({ picture,titre }) => {
 			onScroll={scrollEvent}
 			scrollEventThrottle={1}
 		>
-			<RenderHeader scrollOffset={scrollOffset} picture={picture} titre={titre} />
-			<RenderContent titre={titre}/>
+			<RenderHeader scrollOffset={scrollOffset} info={info} />
+			<RenderContent info={info} />
 		</Animated.ScrollView>
 	);
 };
@@ -131,6 +142,28 @@ const ParrallaxContent = ({ picture,titre }) => {
 	async componentDidMount() {
 		const res = await fetch('https://loripsum.net/api/plaintext');
 		this.setState({ text: await res.text() });
-    }*/
+	}*/
+
+const styles = StyleSheet.create({
+	title: {
+		fontSize: 24,
+		fontFamily: 'montserrat-semiBold',
+		color: Colors.lightBlue,
+	},
+	sub_title: { fontSize: 20, fontFamily: 'montserrat', marginBottom: 20, color: Colors.flat_red },
+	text: {
+		fontSize: 18,
+		color: Colors.lightBlue,
+		marginBottom: 8,
+		fontFamily: 'montserrat-light',
+	},
+	src_cont: { flex: 1, marginTop: 15 },
+	src: {
+		marginBottom: 5,
+		fontFamily: 'montserrat-lightItalic',
+		fontSize: 12,
+		color: Colors.tabIconDefault,
+	},
+});
 
 export default ParrallaxContent;
