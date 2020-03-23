@@ -4,7 +4,7 @@ import { DrawerItem } from '@react-navigation/drawer';
 import { Linking } from 'expo';
 import Layout from '../constants/Layout';
 
-const AboutBugs = ({ navigation }) => {
+const AboutBugs = () => {
 	const linkRedirect = () => {
 		Linking.canOpenURL('https://bugsminers.com').then(supported => {
 			if (supported) {
@@ -17,7 +17,6 @@ const AboutBugs = ({ navigation }) => {
 	return (
 		<DrawerItem
 			label=""
-			onPress={() => linkRedirect()}
 			style={{ marginTop: Layout.window.height / 1.7 }}
 			icon={() => (
 				<View style={styles.profile_pic_container} onPress={() => linkRedirect()}>

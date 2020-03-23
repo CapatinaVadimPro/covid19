@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Platform, StyleSheet, ScrollView, SafeAreaView } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 
 import Colors from '../../../constants/Colors';
 import axios from 'axios';
 import { FirstADR } from 'react-native-dotenv';
 
 import Header, { headerHeight } from '../../../components/Header';
-import Layout from '../../../constants/Layout';
 import Loader from '../../../components/Loader';
 import StatTab from '../../../components/StatTab';
 

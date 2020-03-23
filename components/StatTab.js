@@ -10,7 +10,7 @@ const countryJSON = require('../constants/Countries.json');
 const countryTabEN = Object.keys(countryJSON);
 const countryTabFR = Object.values(countryJSON);
 //onPress={() => scroll.scrollTo({ x: 0, y: 0, animated: true })}
-const DataRow = ({ i, scroll }) => {
+const DataRow = ({ i }) => {
 	return (
 		<View style={styles.row}>
 			<View style={styles.row_case}>
@@ -39,7 +39,7 @@ const DataTab = ({ countries_info, scroll }) => {
 	return Array;
 };
 
-const StatTab = ({ world_info, countries_info, navigation, route, today }) => {
+const StatTab = ({ countries_info }) => {
 	const [scroll, setScroll] = useState();
 	return (
 		<ScrollView style={styles.body} ref={c => setScroll(c)}>

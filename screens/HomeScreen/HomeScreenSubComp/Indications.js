@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { View, Text, Platform, StyleSheet, ScrollView } from 'react-native';
+import { View, StyleSheet, ScrollView } from 'react-native';
 
 import Colors from '../../../constants/Colors';
-import Layout from '../../../constants/Layout';
 
 import Header, { headerHeight } from '../../../components/Header';
 import ParrallaxContent from '../../../components/parralaxContent';
