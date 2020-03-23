@@ -2,11 +2,14 @@
 
 ##### for android & IOS
 
+[french] version
+
 <p align="center">
   <img width="250" height="250" src="./assets/images/icon_bugs.png" alt='BugsminersLogo'>
 </p>
 
 ## Description
+
 This application was made to display all the necessary informations from all around the world about Covid-19.
 Right now we are assaulted by tons of news and fake news about the virus, the quarantine doesn't help much. This atmosphere is really anxiety-provoking for a lot of people. We saw in the country where we're living, France, that pepole have turned insane during the last days, the SARS-CoV-2 pandemic has been announced in France as "a war".
 
@@ -27,7 +30,7 @@ For this last screen we didn't wanted to make things complicated, we could use c
 #### First method:
 
 Download the file from our website :
-As we didn't release any app on stores (Google or Apple store) your phone might warn you about the file you intall on your phone. Just ignore the warning and follow the installation as a normal app.
+As we didn't release any app on stores (Google or Apple store because of restrictions imposed by those store on application about the virus) your phone might warn you about the file you intall on your phone. Just ignore the warning and follow the installation as a normal app.
 If you don't trust what you're installing, all the source Code is here, and you can find the api list at the bottom of this document.
 
 #### Second method
@@ -127,3 +130,4 @@ MIT
 
 [bugsminers]: https://bugsminers.com
 [unsplash]: https://bugsminers.com
+[french]: "./README_FR.md"
