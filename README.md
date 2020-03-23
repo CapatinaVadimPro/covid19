@@ -2,11 +2,10 @@
 
 ##### for android & IOS
 
-![Bugsminers logo](https://bugsminers.com/ressources/pictures/logo/logorose.png)
-
 <p align="center">
-  <img width="460" height="300" src="https://bugsminers.com/ressources/pictures/logo/logorose.png">
+  <img width="250" height="250" src="./assets/images/icon_bugs.png" alt='BugsminersLogo'>
 </p>
+
 ## Description
 This application was made to display all the necessary informations from all around the world about Covid-19.
 Right now we are assaulted by tons of news and fake news about the virus, the quarantine doesn't help much. This atmosphere is really anxiety-provoking for a lot of people. We saw in the country where we're living, France, that pepole have turned insane during the last days, the SARS-CoV-2 pandemic has been announced in France as "a war".
