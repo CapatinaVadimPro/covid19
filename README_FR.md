@@ -130,4 +130,4 @@ MIT
 
 [bugsminers]: https://bugsminers.com
 [unsplash]: https://bugsminers.com
-[anglais]: "./README.md"
+[anglais]: README.md
