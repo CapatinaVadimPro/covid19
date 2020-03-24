@@ -1,12 +1,12 @@
 {
 	"expo": {
-		"name": "Covid Info App",
-		"slug": "COVID_19",
+		"name": "CovInfo",
+		"slug": "CovInfo",
 		"description": "Find data about the coronavirus in the world",
 		"privacy": "public",
 		"sdkVersion": "36.0.0",
 		"platforms": ["ios", "android", "web"],
-		"version": "0.0.0",
+		"version": "1.0.0",
 		"githubUrl": "https://github.com/CapatinaVadimPro/covid19",
 		"orientation": "portrait",
 		"icon": "./assets/images/icon_bugs.png",
