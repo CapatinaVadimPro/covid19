@@ -1,0 +1,39 @@
+{
+	"expo": {
+		"name": "CovInfo",
+		"slug": "CovInfo",
+		"description": "Find data about the coronavirus in the world",
+		"privacy": "public",
+		"sdkVersion": "36.0.0",
+		"platforms": ["ios", "android", "web"],
+		"version": "1.0.0",
+		"githubUrl": "https://github.com/CapatinaVadimPro/covid19",
+		"orientation": "portrait",
+		"icon": "./assets/images/icon_bugs.png",
+		"primaryColor": "#1abc9c",
+		"scheme": "myapp",
+		"splash": {
+			"image": "./assets/images/splash_bugs.png",
+			"resizeMode": "contain",
+			"backgroundColor": "#ffffff"
+		},
+		"updates": {
+			"fallbackToCacheTimeout": 0
+		},
+		"assetBundlePatterns": ["**/*"],
+		"ios": {
+			"bundleIdentifier": "com.bugsminers.covid19",
+			"buildNumber": "1.0.0",
+			"supportsTablet": true
+		},
+		"android": {
+			"package": "com.bugsminers.covid19",
+			"versionCode": 1
+		},
+		"androidStatusBar": {
+			"barStyle": "light-content",
+
+			"backgroundColor": "#000000"
+		}
+	}
+}

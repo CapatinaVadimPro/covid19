@@ -1,0 +1,47 @@
+{
+	"COVID_19": {
+		"title": "Le COVID-19",
+		"text1": "Les Coronavirus sont une grande famille de virus, qui provoquent des maladies allant d’un simple rhume (certains virus saisonniers sont des Coronavirus) à des pathologies plus sévères comme le MERS-COV ou le SRAS. Le virus identifié en janvier 2020 en Chine est un nouveau Coronavirus, nommé SARS-CoV-2. La maladie provoquée par ce coronavirus a été nommée COVID-19 par l’Organisation mondiale de la Santé - OMS.Depuis le 11 mars 2020, l’OMS qualifie la situation mondiale du COVID-19 de pandémie ; c’est-à-dire que l’épidémie est désormais mondiale.",
+		"src1": "https://www.gouvernement.fr/info-coronavirus",
+		"text2": "Les coronavirus (CoV) forment une grande famille de virus qui provoquent des manifestations allant du simple rhume à des maladies plus graves tels que le syndrome respiratoire du Moyen-Orient (MERS) et le syndrome respiratoire aigu sévère (SRAS). Un nouveau coronavirus (nCoV) est une nouvelle souche de coronavirus qui n’a pas encore été identifiée chez l’homme. Les coronavirus sont zoonotiques, c’est-à-dire qu’ils se transmettent de l’animal à l’homme. Des enquêtes détaillées ont révélé que le SARS-CoV se transmettait de la civette à l’homme et le MERS-CoV du dromadaire à l’homme. Plusieurs coronavirus connus qui n’ont pas encore infecté l’homme circulent chez certains animaux. Les signes courants d’infection sont les symptômes respiratoires, la fièvre, la toux, l’essoufflement et la dyspnée. Dans les cas plus graves, l’infection peut provoquer une pneumonie, un syndrome respiratoire aigu sévère, une insuffisance rénale et même la mort. Les recommandations standard pour prévenir la propagation de l’infection comprennent le lavage régulier des mains, le fait de se couvrir la bouche et le nez lorsque l’on tousse et éternue et une cuisson complète de la viande et des œufs. Il faut éviter les contacts étroits avec toute personne présentant des symptômes de maladie respiratoire tels que la toux et les éternuements.",
+		"src2": "https://www.who.int/fr/health-topics/coronavirus/coronavirus",
+		"img": "https://images.unsplash.com/photo-1583324113626-70df0f4deaab?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=889&q=80",
+		"src1_name": "gouvernement.fr",
+		"src2_name": "who.int"
+	},
+	"STAY_HOME": {
+		"title": "Restez chez vous au maximum",
+		"sub_title": "Ne sortez pas sans raison valable",
+		"text1": "En effet, la mesure de confinement prise par de plus en plus de pays dans le monde n'est pas la pour faire joli, si beaucoup de citoyens français semblent faire fît de cette mesure ce n'est pas pour autant que c'est la marche à suivre. Et oui car même si vous semblez protegés grâce au port de masque, gants ou tout autre type de protection, le virus est très volatile, il se posera sur vos vêtements, votre peau et cela peut importe vos protection, en plus de s'y poser il y vivra, parfos quelques heures, parfois quelques jours. Se confiner c'est éviter de transporter le virus partout, déjà chez vous mais également chez les autres. Même si vous n'attrapez jamais ce virus, si vous sortez les chances que vous commenciez a le transporter sont très grandes, tout contact avec une autre personne peut alors avoir de lourdes conséquences, chez les plus faibles cela engendrera probablement des états critiques.",
+		"text2": "Dans notre pays le confinement est pour le moment, dimanche 22 mars, de 15 jours (renouvelable), cela correspond au temps d'incubation du virus. Le gouvernement tient absolument a limiter les déplacements et à donc mit en place des amendes jusqu'à 135€ pour les personnes qui sortiraient sans raison valable, à savoir des besoins vitaux comme se réapprovisionner en nourriture par exemple. Les pages suivantes vous expliqueront les bons gestes à avoir pour lutter encore plus efficaement contre le virus.",
+		"src1": "",
+		"img": "https://images.unsplash.com/photo-1525847664954-bcd1e64c6ad8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
+		"src1_name": null
+	},
+	"HAND_WASH_NO_CONTACT": {
+		"title": "Se laver les mains et eviter les contacts",
+		"text1": "Le Covid-19 se transmet par la salive, les gouttelettes dues à la toux ou aux éternuements, par contact rapproché avec des malades comme des poignées de main ou des embrassades et par contact avec des surfaces contaminées. Une étude semble indiquer que le Covid-19 serait viable plusieurs heures sur différentes surfaces, jusqu'à 24 heures sur du carton et jusqu'à 2-3 jours sur du plastique et l'acier inoxydable.",
+		"text2": "On ne sait toutefois pas s'il reste infectant durant tout ce temps. C'est pourquoi, pour se prémunir d'une contamination, se laver les mains régulièrement, notamment après avoir voyagé dans les transports en commun ou avant les repas, est indispensable. Alors que la pandémie mondiale continue de prendre de l'ampleur et qu'un vaccin n'a pas encore été développé, nous devons agir sans délai en utilisant le seul outil dont nous disposons déjà : le lavage régulier des mains avec du savon.",
+		"src1": "https://www.lepoint.fr/afrique/covid-19-pourquoi-il-est-imperatif-de-se-laver-les-mains-20-03-2020-2368057_3826.php#",
+		"img": "https://images.unsplash.com/photo-1583947582886-f40ec95dd752?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
+		"src1_name": "lepoint.fr"
+	},
+	"NOSE_PAPER": {
+		"title": "Utilisez des mouchoirs en papier",
+		"text1": "Les sécrétions nasales (mucus) sont produites par la muqueuse qui tapisse les fosses nasales. Elles humidifient et réchauffent en permanence l’air inspiré. À la manière d’un filtre, elles piègent aussi les microparticules présentes dans l’air pour protéger nos poumons. En cas d’infection (rhume par exemple), la muqueuse nasale gonfle et la production de mucus (composé à plus de 95% d’eau) augmente pour évacuer un maximum de virus hors de la cavité nasale. Cela explique pourquoi on a le nez qui coule quand on est enrhumé. Les virus qui sont évacués du nez quand on se mouche peuvent survivre plusieurs heures sur un mouchoir (8h à 12h pour le virus de la grippe par exemple). Voilà pourquoi il faut se moucher de préférence avec un mouchoir en papier à usage unique et ne pas le remettre, ensuite, dans sa poche pour le réutiliser.",
+		"src1": "https://solidarites-sante.gouv.fr/prevention-en-sante/preserver-sa-sante/pour-un-hiver-sans-virus/article/geste-3-se-moucher-dans-un-mouchoir-a-usage-unique",
+		"img": "https://images.unsplash.com/photo-1583947215172-b3880c534af4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjF9&auto=format&fit=crop&w=750&q=80",
+		"src1_name": "solidarites-sante.gouv.fr"
+	},
+	"WEAR_MASK": {
+		"title": "Portez un masque",
+		"sub_title": "Uniquement si vous êtes malade, en contact direct avec un malade ou une personne à risque",
+		"text1": "Aucun besoin pour le public lambda. C’est pourquoi les personnels médicaux, en contact rapproché avec les patients, doivent en revanche porter un masque. <<Pour les autres, c’est ridicule, estime le médecin. Tant qu’on respecte le mètre de distance, il n’y a aucun besoin de porter ces masques. J’ai vu des automobilistes porter un masque, seuls dans leur véhicule… >>",
+		"text2": "Pour vous prémunir du virus, préférez appliquer les mesures barrières “plus logiques que les masques”, insiste l’experte. Utilisez des mouchoirs à usage unique, lavez-vous régulièrement les mains (gel hydroalcoolique si besoin), toussez ou éternuez dans votre coude, aérez votre intérieur et évitez les contacts rapprochés avec des personnes susceptibles d’être porteuses du virus. Le port d'un masque, n'empêche pas la contamination, si vous entrez physiquement en contact avec une personne malade le virus peut se deposer sur votre corps et dès lors, vous frotter les yeux, le visage, même plusieurs heures après le contact peut vous contaminer. Ne portez de masque qu'en cas de nécéssité absolue afin d'en laisser pour les personnes qui en ont réellement besoin.",
+		"src1": "https://www.ouest-france.fr/sante/virus/coronavirus/coronavirus-masque-chirurgical-ou-protection-en-tissu-est-ce-efficace-contre-le-covid-19-6784517",
+		"src2": "https://www.santemagazine.fr/actualites/actualites-sante/les-masques-sont-ils-utiles-pour-se-proteger-du-coronavirus-covid-19-431916",
+		"img": "https://images.unsplash.com/photo-1512479064533-47d51d07bb93?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80",
+		"src1_name": "Ouest-France.fr",
+		"src2_name": "Santemagazine.fr"
+	}
+}
